@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 20_200_517_132_433) do
     t.integer 'status', default: 0, null: false
     t.integer 'parent_id'
     t.string 'type', null: false
+    t.bigint 'merchant_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.index ['merchant_id'], name: 'index_transactions_on_merchant_id'
   end
 
   create_table 'users', force: :cascade do |t|
@@ -53,4 +55,5 @@ ActiveRecord::Schema.define(version: 20_200_517_132_433) do
   end
 
   add_foreign_key 'merchants', 'users'
+  add_foreign_key 'transactions', 'merchants'
 end
