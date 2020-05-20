@@ -1,0 +1,5 @@
+role,email,password,name,description,status,total_transaction_sum
+merchant,john@doe.com,password1,John,desc,active,200
+admin,foo@bar.com,password2,,,,
+merchant,john2@doe.com,password1,John2,desc2,active,200
+admin,foo2@bar.com,password2,,,,
