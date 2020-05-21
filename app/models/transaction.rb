@@ -5,11 +5,10 @@ class Transaction < ApplicationRecord
 
   enum status: %i[error approved reversed refunded]
 
-  validates :uuid, presence: true, format: UUID_FORMAT
+  validates :uuid, presence: true, uniqueness: true, format: UUID_FORMAT
   validates :customer_email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :amount, numericality: { only_integer: true, greater_than: 0 }, unless: :skip_amount_validation?
   validate  :referenced_transaction, unless: :skip_referenced_transaction_validation?
-  validate  :merchant_state
 
   belongs_to :merchant
   belongs_to :parent, class_name: 'Transaction', foreign_key: 'parent_id', optional: true
@@ -27,10 +26,7 @@ class Transaction < ApplicationRecord
   private
 
   def referenced_transaction
-    parent.present?
-  end
-
-  def merchant_state
-    merchant.active?
+    errors.add(:parent, :required) unless parent_id.present?
+    errors.add(:parent, :invalid) unless parent.present?
   end
 end

@@ -3,7 +3,7 @@
 class AuthorizeTransaction < Transaction
   protected
 
-  def skip_referenced_transaction_validation
-    false
+  def skip_referenced_transaction_validation?
+    true
   end
 end

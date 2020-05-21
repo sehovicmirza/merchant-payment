@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'activerecord-import'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
+gem 'simple_token_authentication', '~> 1.0' 
 gem 'whenever', require: false
 
 group :development, :test do
