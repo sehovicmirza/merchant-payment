@@ -1,0 +1,19 @@
+p#notice= notice
+h1 Merchants
+table
+  thead
+    tr
+      th colspan='3'
+  tbody
+    th Name
+    th Email
+    th Status
+    th colspan='2'
+    - @merchants.each do |merchant|
+      tr
+        td= merchant.name
+        td= merchant.user.email
+        td= merchant.status
+        td= link_to 'Show', merchant
+        td= link_to 'Edit', edit_merchant_path(merchant)
+        td= link_to 'Destroy', merchant, method: :delete, data: { confirm: 'Are you sure?' } 

@@ -1,0 +1,23 @@
+= form_with(model: merchant, local: true) do |form|
+  table
+    tbody
+      tr
+        td
+          = form.label :name
+          = form.text_field :name
+        td
+          = form.label :description
+          = form.text_area :description
+        td
+          = form.label :status
+          = form.select(:status, Merchant.statuses.keys.map {|key| [key,key]})
+  - if merchant.errors.any?
+    #error_explanation
+      h2
+        = pluralize(merchant.errors.count, "error")
+        | prohibited this merchant from being saved:
+      ul
+        - merchant.errors.full_messages.each do |message|
+          li= message
+  .actions
+    = form.submit
