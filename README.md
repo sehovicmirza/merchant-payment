@@ -1,3 +1,6 @@
+# PROJECT REQUIREMENTS
+Click [here](https://drive.google.com/file/d/1tGGlStHzIt1oxkCvyJbIYO1gQV_MMDHF/view?usp=sharing) to read the project requirements
+
 # TESTING GUIDE
 
 # Initial Setup
